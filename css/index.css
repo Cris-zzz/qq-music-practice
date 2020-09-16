@@ -1,0 +1,98 @@
+body{
+    font-family: poppin,Tahoma,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.header{
+    height: 48px;
+    position: relative;
+    background-color: #525252;
+}
+
+.header .logo{
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.header .player_login{
+    position: absolute;
+    right: 63px;
+    top: 20px;
+    line-height: 28px;
+    display: flex;
+}
+
+.player_login .player_login_guide{
+    font-size: 14px;
+    margin-right: 9px;
+    color: #fff;
+}
+
+.player_login .player_login_guide_btn{
+    display: inline-block;
+    font-size: 15px;
+    margin-right: 26px;
+    height: 28px;
+    padding: 0 17px;
+    border-radius: 28px;
+    background-color: #31c27c;
+    color: #fff;
+}
+/*.header .register{*/
+/*    position: absolute;*/
+/*    right: 63px;*/
+/*    top: 25px;*/
+/*    !*background-color: #94bbfc;*!*/
+/*}*/
+
+.register a:first-child{
+    margin-right: 11px;
+}
+
+.register a{
+    color: #fff;
+    font-size: 14px;
+}
+
+.content_in{
+    width: 1200px;
+    height: 460px;
+    background-color: #727d75;
+    margin: 0 auto;
+}
+
+.content_in .content_left{
+    width: 800px;
+    height: 100%;
+    float: left;
+    background-color: dodgerblue;
+}
+
+.content_in .content_right{
+    width: 400px;
+    height: 100%;
+    float: right;
+    background-color: #78baf6;
+}
+
+.footer{
+    height: 79px;
+    background-color: #525252;
+}
+
+/*精灵图相关*/
+.sprite{
+    background-image: url("../img/icon_sprite.png");
+}
+
+.player_login_guide_icon{
+    display: inline-block;
+    vertical-align: middle;
+    width: 13px;
+    height: 14px;
+    background-position: -160px -320px;
+}
