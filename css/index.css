@@ -105,7 +105,7 @@ a{
 }
 
 .player_main .song_list{
-    width: 67%;
+    width: 71%;
     height: 361px;
     background-color: dodgerblue;
     margin-top: 38px;
@@ -113,31 +113,56 @@ a{
 
 .song_list .song_list_header{
     display: flex;
+    height: 50px;
+    line-height: 50px;
 }
 
-.song_list_header_check input{
+.song_list_checkbox{
     margin: 0;
 }
 
-.song_list_header .song_list_header_name{
+.song_list_header_name{
     margin-left: 47px;
+    width: 450px;
 }
 
 .song_list_header .song_list_header_author{
-    margin-left: 418px;
+    width: 200px;
 }
 
-.song_list_header .song_list_header_time{
-    margin-left: 168px;
+/*.song_list_header_time{*/
+/*    margin-left: 168px;*/
+/*}*/
+
+.border_t_b{
+    border-top: 1px solid rgba(255, 255, 255, .02);
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+.song_list_content > li{
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
 }
 
 .player_main .song_info{
     position: absolute;
     top: 0;
     right: 0;
-    width: 33%;
+    width: 29%;
     height: 100%;
     background-color: #78baf6;
+}
+
+.song_info_cover{
+    display: block;
+    margin: 0 auto;
+    width: 209px;
+    height: 186px;
+    background: url("../img/album_cover_player.png") 8px 0;
+}
+
+.song_info_pic{
+    width: 186px;
+    height: 186px;
 }
 
 .footer{
