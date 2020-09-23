@@ -42,12 +42,6 @@ a{
     background-color: #31c27c;
     color: #fff;
 }
-/*.header .register{*/
-/*    position: absolute;*/
-/*    right: 63px;*/
-/*    top: 25px;*/
-/*    !*background-color: #94bbfc;*!*/
-/*}*/
 
 .register a:first-child{
     margin-right: 11px;
@@ -58,28 +52,99 @@ a{
     font-size: 14px;
 }
 
-.content_in{
-    width: 1200px;
-    height: 460px;
+.player_main{
+    position: relative;
     background-color: #727d75;
-    margin: 0 auto;
+    margin: 17px 6% 0 6%;
 }
 
-.content_in .content_left{
-    width: 800px;
-    height: 100%;
-    float: left;
+.player_main .song_list_toolbar{
+    display: flex;
+}
+
+.song_list_toolbar .mod_btn{
+    border: 1px solid #c9c9c9;
+    border-radius: 2px;
+    font-size: 14px;
+    height: 38px;
+    line-height: 38px;
+    width: 122px;
+    text-align: center;
+    color: #fff;
+}
+
+.song_list_toolbar .mod_btn + .mod_btn{
+    margin-left: 6px;
+}
+
+.mod_btn i{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.mod_btn .mod_btn_icon_like{
+    background-position: -60px -20px;
+}
+
+.mod_btn .mod_btn_icon_add{
+    background-position: -20px -20px;
+}
+
+.mod_btn .mod_btn_icon_download{
+    background-position: -40px -240px;
+}
+
+.mod_btn .mod_btn_icon_delete{
+    background-position: -100px -20px;
+}
+
+.mod_btn .mod_btn_icon_deleteall{
+    background-position: -41px -301px;
+}
+
+.player_main .song_list{
+    width: 67%;
+    height: 361px;
     background-color: dodgerblue;
+    margin-top: 38px;
 }
 
-.content_in .content_right{
-    width: 400px;
+.song_list .song_list_header{
+    display: flex;
+}
+
+.song_list_header_check input{
+    margin: 0;
+}
+
+.song_list_header .song_list_header_name{
+    margin-left: 47px;
+}
+
+.song_list_header .song_list_header_author{
+    margin-left: 418px;
+}
+
+.song_list_header .song_list_header_time{
+    margin-left: 168px;
+}
+
+.player_main .song_info{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 33%;
     height: 100%;
-    float: right;
     background-color: #78baf6;
 }
 
 .footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 79px;
     background-color: #525252;
 }
