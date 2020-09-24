@@ -58,11 +58,11 @@ a{
     margin: 17px 6% 0 6%;
 }
 
-.player_main .song_list_toolbar{
+.song_list_toolbar{
     display: flex;
 }
 
-.song_list_toolbar .mod_btn{
+.mod_btn{
     border: 1px solid #c9c9c9;
     border-radius: 2px;
     font-size: 14px;
@@ -73,7 +73,7 @@ a{
     color: #fff;
 }
 
-.song_list_toolbar .mod_btn + .mod_btn{
+.mod_btn + .mod_btn{
     margin-left: 6px;
 }
 
@@ -84,37 +84,42 @@ a{
     vertical-align: middle;
 }
 
-.mod_btn .mod_btn_icon_like{
+.mod_btn_icon_like{
     background-position: -60px -20px;
 }
 
-.mod_btn .mod_btn_icon_add{
+.mod_btn_icon_add{
     background-position: -20px -20px;
 }
 
-.mod_btn .mod_btn_icon_download{
+.mod_btn_icon_download{
     background-position: -40px -240px;
 }
 
-.mod_btn .mod_btn_icon_delete{
+.mod_btn_icon_delete{
     background-position: -100px -20px;
 }
 
-.mod_btn .mod_btn_icon_deleteall{
+.mod_btn_icon_deleteall{
     background-position: -41px -301px;
 }
 
-.player_main .song_list{
+.song_list{
     width: 71%;
     height: 361px;
+    color: rgba(255, 255, 255, .8);
     background-color: dodgerblue;
     margin-top: 38px;
 }
 
-.song_list .song_list_header{
+.song_list_header{
     display: flex;
     height: 50px;
     line-height: 50px;
+}
+
+.song_list a{
+    color: rgba(255, 255, 255, .8);
 }
 
 .song_list_checkbox{
@@ -126,7 +131,7 @@ a{
     width: 450px;
 }
 
-.song_list_header .song_list_header_author{
+.song_list_header_author{
     width: 200px;
 }
 
@@ -143,26 +148,55 @@ a{
     border-bottom: 1px solid rgba(255, 255, 255, .2);
 }
 
-.player_main .song_info{
+.song_info{
     position: absolute;
     top: 0;
     right: 0;
     width: 29%;
     height: 100%;
+    color: rgba(255, 255, 255, .8);
+    font-size: 14px;
+    text-align: center;
     background-color: #78baf6;
+}
+
+.song_info a{
+    color: rgba(255, 255, 255, .8);
 }
 
 .song_info_cover{
     display: block;
     margin: 0 auto;
-    width: 209px;
+    width: 233px;
     height: 186px;
-    background: url("../img/album_cover_player.png") 8px 0;
+    background: url("../img/album_cover_player.png") 32px 0 no-repeat;
 }
 
 .song_info_pic{
     width: 186px;
     height: 186px;
+}
+
+.song_info_name, .song_info_singer, .song_info_album{
+    height: 28px;
+    line-height: 28px;
+    text-overflow: ellipsis;
+}
+
+.song_info_name{
+    margin-top: 15px;
+}
+
+.song_info_lyric{
+    width: 300px;
+    height: 47px;
+    margin: 15px auto 0 auto;
+    overflow: hidden;
+    background-color: #666666;
+}
+
+.song_info_lyric_inner{
+    line-height: 34px;
 }
 
 .footer{
