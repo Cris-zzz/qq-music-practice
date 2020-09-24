@@ -112,8 +112,7 @@ a{
     margin-top: 38px;
 }
 
-.song_list_header{
-    display: flex;
+.song_list_header, .song_list_item{
     height: 50px;
     line-height: 50px;
 }
@@ -122,22 +121,22 @@ a{
     color: rgba(255, 255, 255, .8);
 }
 
-.song_list_checkbox{
+.song_list_checkbox, .song_list_item_checkbox{
     margin: 0;
 }
 
-.song_list_header_name{
+.song_list_header > span, .song_list_item > span{
+    display: inline-block;
+}
+
+.song_list_header_name, .song_list_item_name{
     margin-left: 47px;
     width: 450px;
 }
 
-.song_list_header_author{
+.song_list_header_author, .song_list_item_author{
     width: 200px;
 }
-
-/*.song_list_header_time{*/
-/*    margin-left: 168px;*/
-/*}*/
 
 .border_t_b{
     border-top: 1px solid rgba(255, 255, 255, .02);
