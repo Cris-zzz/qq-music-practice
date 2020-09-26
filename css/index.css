@@ -110,6 +110,7 @@ a{
     color: rgba(255, 255, 255, .8);
     background-color: dodgerblue;
     margin-top: 38px;
+    overflow: auto;
 }
 
 .song_list_header, .song_list_item{
@@ -125,13 +126,60 @@ a{
     margin: 0;
 }
 
-.song_list_header > span, .song_list_item > span{
-    display: inline-block;
+.song_list_header, .song_list_item{
+    display: flex;
 }
 
-.song_list_header_name, .song_list_item_name{
+.song_list_number{
+    display: inline-block;
+    width: 36px;
+    text-align: right;
+}
+
+.song_list_header_name{
     margin-left: 47px;
     width: 450px;
+}
+
+.song_list_item_name{
+    margin-left: 10px;
+    width: 266px;
+}
+
+.song_list_item_menu{
+    width: 184px;
+}
+
+.list_menu_item_play, .list_menu_item_add, .list_menu_item_down, .list_menu_item_share{
+    display: none;
+    width: 36px;
+    height: 36px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.song_list_item_delete{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    vertical-align: middle;
+    background-position: -80px -160px;
+}
+
+.list_menu_item_play{
+    background-position: -80px 0;
+}
+
+.list_menu_item_add{
+    background-position: -80px -80px;
+}
+
+.list_menu_item_down{
+    background-position: -80px -120px;
+}
+
+.list_menu_item_share{
+    background-position: -80px -40px;
 }
 
 .song_list_header_author, .song_list_item_author{
@@ -210,6 +258,10 @@ a{
 /*精灵图相关*/
 .sprite{
     background-image: url("../img/icon_sprite.png");
+}
+
+.sprite_song_control{
+    background-image: url("../img/icon_list_menu.png");
 }
 
 .player_login_guide_icon{

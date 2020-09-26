@@ -60,23 +60,32 @@
 
         <div class="song_list">
             <div class="song_list_header border_t_b">
-                <span class="song_list_header_check">
+                <div class="song_list_header_check">
                     <input type="checkbox" class="song_list_checkbox">
-                </span>
-                <span class="song_list_header_name">歌曲</span>
-                <span class="song_list_header_author">歌手</span>
-                <span class="song_list_header_time">时长</span>
+                </div>
+                <div class="song_list_header_name">歌曲</div>
+                <div class="song_list_header_author">歌手</div>
+                <div class="song_list_header_time">时长</div>
             </div>
 
             <ul class="song_list_content">
+                <!--动态加载歌曲列表-->
                 <li class="song1">
                     <div class="song_list_item">
-                        <span class="song_list_item_check">
+                        <div class="song_list_item_check">
                             <input type="checkbox" class="song_list_item_checkbox">
-                        </span>
-                        <span class="song_list_item_name">Love is Gone</span>
-                        <span class="song_list_item_author">Angesi</span>
-                        <span class="song_list_item_time">02:58</span>
+                        </div>
+                        <div class="song_list_number">1</div>
+                        <div class="song_list_item_name">Love is Gone</div>
+                        <div class="song_list_item_menu">
+                            <a href="javascript:;" class="list_menu_item_play sprite_song_control" title="播放"></a
+                            ><a href="javascript:;" class="list_menu_item_add sprite_song_control" title="添加到歌单"></a
+                            ><a href="javascript:;" class="list_menu_item_down sprite_song_control" title="下载"></a
+                            ><a href="javascript:;" class="list_menu_item_share sprite_song_control" title="分享"></a>
+                        </div>
+                        <div class="song_list_item_author">Angesi</div>
+                        <div class="song_list_item_time">02:58</div>
+                        <div><a href="javascript:;" class="song_list_item_delete sprite_song_control" title="删除"></a></div>
                     </div>
                 </li>
             </ul>
