@@ -13,19 +13,14 @@ $(
                         $musicList.append($item);
                     })
 
-                    // 歌曲列表控制工具的显示与隐藏
-                    $(".song_list_content > li").hover(function () {
-                        $(this).find(".song_list_item_menu > a").css({display: "inline-block"});
-                        console.log($(this).find(".song_list_item_menu > a").prop("display"));
-                    },function () {
-                        $(this).find(".song_list_item_menu > a").css({display: "none"});
-                    })
+                    //所有按钮工具默认隐藏
+                    $(".song_list_item_menu > a").fadeOut(0);
                 }
             }
         )
         
         function creatMusicItem(index, music) {
-            let $item = $(`
+            return $(`
             <li class="song1">
                 <div class="song_list_item">
                     <div class="song_list_item_check">
@@ -44,7 +39,25 @@ $(
                     <div><a href="javascript:;" class="song_list_item_delete sprite_song_control" title="删除"></a></div>
                 </div>
             </li>`);
-            return $item;
         }
+
+        // 歌曲列表控制工具的显示与隐藏
+        $(".song_list_content").delegate("li", "mouseenter", function () {
+            $(this).find(".song_list_item_menu > a").css("display","inline-block");
+        });
+
+        $(".song_list_content").delegate("li", "mouseleave", function () {
+            $(this).find(".song_list_item_menu > a").css("display","none");
+        });
+
+        $(".song_list_content").delegate("li", "mouseenter", function () {
+            $(this).find(".song_list_item_delete").css("display","inline-block");
+            $(this).find(".song_list_item_time").css("display","none");
+        });
+
+        $(".song_list_content").delegate("li", "mouseleave", function () {
+            $(this).find(".song_list_item_delete").css("display","none");
+            $(this).find(".song_list_item_time").css("display","inline-block");
+        });
     }
 )

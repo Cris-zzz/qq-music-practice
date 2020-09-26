@@ -43,6 +43,14 @@ a{
     color: #fff;
 }
 
+.player_login_guide_icon{
+    display: inline-block;
+    vertical-align: middle;
+    width: 13px;
+    height: 14px;
+    background-position: -160px -320px;
+}
+
 .register a:first-child{
     margin-right: 11px;
 }
@@ -143,11 +151,11 @@ a{
 
 .song_list_item_name{
     margin-left: 10px;
-    width: 266px;
+    width: 250px;
 }
 
 .song_list_item_menu{
-    width: 184px;
+    width: 200px;
 }
 
 .list_menu_item_play, .list_menu_item_add, .list_menu_item_down, .list_menu_item_share{
@@ -159,7 +167,7 @@ a{
 }
 
 .song_list_item_delete{
-    display: inline-block;
+    display: none;
     width: 36px;
     height: 36px;
     vertical-align: middle;
@@ -247,13 +255,118 @@ a{
 }
 
 .footer{
+    display: flex;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 79px;
+    height: 67px;
     background-color: #525252;
 }
+
+.footer_left_control{
+    width: 280px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #1495ff;
+}
+
+.btn_prev{
+    display: inline-block;
+    width: 19px;
+    height: 20px;
+    margin-left: 77px;
+    background-position: 0 -30px;
+}
+
+.btn_play{
+    display: inline-block;
+    width: 21px;
+    height: 29px;
+    margin-left: 46px;
+    background-position: 0 0;
+}
+
+.btn_next{
+    display: inline-block;
+    width: 19px;
+    height: 20px;
+    margin-left: 46px;
+    background-position: 0 -52px;
+}
+
+.footer_middle{
+    position: relative;
+    width: 476px;
+    height: 35px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, .8);
+    background-color: #6fc2ff;
+}
+
+.footer_middle_info{
+    padding-right: 90px;
+    height: 21px;
+    line-height: 21px;
+    background-color: #ff6600;
+}
+
+.footer_middle_info > a{
+    color: rgba(255, 255, 255, .8);
+}
+
+.footer_middle_time{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 90px;
+    height: 21px;
+    line-height: 21px;
+    box-sizing: border-box;
+    padding-left: 4px;
+    background-color: #fc4f00;
+}
+
+.footer_middle_progress{
+    height: 14px;
+    padding-top: 6px;
+    box-sizing: border-box;
+    background-color: #ffbf00;
+}
+
+.footer_progress_load{
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.footer_progress_play{
+    position: relative;
+    top: -2px;
+    width: 7%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.footer_progress_dot{
+    display: inline-block;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 10px;
+    height: 10px;
+    background-position: 0 -170px;
+}
+
+.footer_right_control{
+    width: 526px;
+    height: 35px;
+    background-color: #1495ff;
+}
+
+
 
 /*精灵图相关*/
 .sprite{
@@ -264,10 +377,6 @@ a{
     background-image: url("../img/icon_list_menu.png");
 }
 
-.player_login_guide_icon{
-    display: inline-block;
-    vertical-align: middle;
-    width: 13px;
-    height: 14px;
-    background-position: -160px -320px;
+.sprite_player{
+    background-image: url("../img/player.png");
 }
