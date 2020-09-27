@@ -59,5 +59,13 @@ $(
             $(this).find(".song_list_item_delete").css("display","none");
             $(this).find(".song_list_item_time").css("display","inline-block");
         });
+
+        $(".logo").mouseenter(function () {
+            $(this).css("opacity", "1");
+        })
+
+        $(".logo").mouseleave(function () {
+            $(this).css("opacity", ".3");
+        })
     }
 )

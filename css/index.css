@@ -1,5 +1,18 @@
 body{
     font-family: poppin,Tahoma,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+    background-color: #525252;
+}
+
+.player_bg{
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../img/T001R300x300M000003qqeEQ4OJNtp.jpg") 50% / cover no-repeat;
+    opacity: .6;
+    filter: blur(65px);
 }
 
 a{
@@ -9,13 +22,15 @@ a{
 .header{
     height: 48px;
     position: relative;
-    background-color: #525252;
+    z-index: 3;
+    /*background-color: #525252;*/
 }
 
 .header .logo{
     float: left;
     margin-top: 20px;
     margin-left: 20px;
+    opacity: .3;
 }
 
 .header .player_login{
@@ -58,11 +73,13 @@ a{
 .register a{
     color: #fff;
     font-size: 14px;
+    opacity: .3;
 }
 
 .player_main{
     position: relative;
-    background-color: #727d75;
+    z-index: 3;
+    /*background-color: #727d75;*/
     margin: 17px 6% 0 6%;
 }
 
@@ -70,8 +87,16 @@ a{
     display: flex;
 }
 
+.song_list_toolbar > a{
+    opacity: .8;
+}
+
+.song_list_toolbar i{
+    opacity: .6;
+}
+
 .mod_btn{
-    border: 1px solid #c9c9c9;
+    border: 1px solid rgba(201, 201, 201, 0.2);
     border-radius: 2px;
     font-size: 14px;
     height: 38px;
@@ -116,7 +141,7 @@ a{
     width: 71%;
     height: 361px;
     color: rgba(255, 255, 255, .8);
-    background-color: dodgerblue;
+    /*background-color: dodgerblue;*/
     margin-top: 38px;
     overflow: auto;
 }
@@ -212,7 +237,7 @@ a{
     color: rgba(255, 255, 255, .8);
     font-size: 14px;
     text-align: center;
-    background-color: #78baf6;
+    /*background-color: #78baf6;*/
 }
 
 .song_info a{
@@ -247,7 +272,7 @@ a{
     height: 47px;
     margin: 15px auto 0 auto;
     overflow: hidden;
-    background-color: #666666;
+    /*background-color: #666666;*/
 }
 
 .song_info_lyric_inner{
@@ -257,11 +282,12 @@ a{
 .footer{
     display: flex;
     position: absolute;
+    z-index: 3;
     bottom: 0;
     left: 0;
     right: 0;
     height: 67px;
-    background-color: #525252;
+    /*background-color: #525252;*/
 }
 
 .footer_left_control{
@@ -270,7 +296,7 @@ a{
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    background-color: #1495ff;
+    /*background-color: #1495ff;*/
 }
 
 .btn_prev{
@@ -303,14 +329,14 @@ a{
     height: 35px;
     font-size: 14px;
     color: rgba(255, 255, 255, .8);
-    background-color: #6fc2ff;
+    /*background-color: #6fc2ff;*/
 }
 
 .footer_middle_info{
     padding-right: 90px;
     height: 21px;
     line-height: 21px;
-    background-color: #ff6600;
+    /*background-color: #ff6600;*/
 }
 
 .footer_middle_info > a{
@@ -326,14 +352,14 @@ a{
     line-height: 21px;
     box-sizing: border-box;
     padding-left: 4px;
-    background-color: #fc4f00;
+    /*background-color: #fc4f00;*/
 }
 
 .footer_middle_progress{
     height: 14px;
     padding-top: 6px;
     box-sizing: border-box;
-    background-color: #ffbf00;
+    /*background-color: #ffbf00;*/
 }
 
 .footer_progress_load{
@@ -363,11 +389,107 @@ a{
 .footer_right_control{
     width: 526px;
     height: 35px;
-    background-color: #1495ff;
+    line-height: 35px;
+    /*background-color: #1495ff;*/
 }
 
+.btn_style{
+    display: inline-block;
+    width: 26px;
+    height: 25px;
+    vertical-align: middle;
+    margin-left: 43px;
+    background-position: 0 -205px;
+}
 
+.btn_like{
+    display: inline-block;
+    width: 23px;
+    height: 21px;
+    vertical-align: middle;
+    margin-left: 24px;
+    background-position: 0 -96px;
+}
 
+.btn_down{
+    display: inline-block;
+    width: 22px;
+    height: 21px;
+    vertical-align: middle;
+    margin-left: 24px;
+    background-position: 0 -120px;
+}
+
+.btn_comment{
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-left: 24px;
+    background-position: 0 -430px;
+}
+
+.comment_numbers{
+    position: absolute;
+    top: -3px;
+    right: -10px;
+    line-height: 8px;
+}
+
+.comment_num_9{
+    display: inline-block;
+    width: 6px;
+    height: 9px;
+    background-position: -40px -210px;
+}
+
+.comment_num_add{
+    display: inline-block;
+    width: 6px;
+    height: 8px;
+    background-position: -25px -125px;
+}
+
+.btn_mode{
+    display: inline-block;
+    width: 74px;
+    height: 26px;
+    vertical-align: middle;
+    margin-left: 24px;
+    background-position: 0 -282px;
+}
+
+.player_voice{
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 112px;
+    height: 35px;
+    margin-right: 79px;
+    cursor: pointer;
+}
+
+.btn_voice{
+    display: inline-block;
+    width: 26px;
+    height: 21px;
+    background-position: 0 -144px;
+}
+
+.voice_progress{
+    width: 80px;
+    height: 2px;
+    background-color: rgba(255,255,255,.1)
+}
+
+.voice_progress_play{
+    position: relative;
+    width: 40%;
+    height: 2px;
+    background-color: rgba(255,255,255,.7)
+}
 /*精灵图相关*/
 .sprite{
     background-image: url("../img/icon_sprite.png");
@@ -379,4 +501,8 @@ a{
 
 .sprite_player{
     background-image: url("../img/player.png");
+}
+
+.sprite_comment{
+    background-image: url("../img/comment.png");
 }
