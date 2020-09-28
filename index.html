@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>QQ音乐</title>
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/jquery1.12.4.js"></script>
+    <script src="./js/jquery.mCustomScrollbar.js"></script>
     <script src="./js/main.js"></script>
 
     <script>
@@ -58,11 +60,9 @@
             </a>
         </div>
 
-        <div class="song_list">
-            <div class="song_list_header border_t_b">
-                <div class="song_list_header_check">
-                    <input type="checkbox" class="song_list_checkbox">
-                </div>
+        <div class="song_list mCustomScrollbar" data-mcs-theme="minimal-dark">
+            <div class="song_list_item border_t_b">
+                <div class="song_list_check song_list_all_check sprite"></div>
                 <div class="song_list_header_name">歌曲</div>
                 <div class="song_list_header_author">歌手</div>
                 <div class="song_list_header_time">时长</div>

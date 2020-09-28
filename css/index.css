@@ -16,6 +16,7 @@ body{
 }
 
 a{
+    color: rgba(255, 255, 255, .8);
     text-decoration: none;
 }
 
@@ -26,11 +27,15 @@ a{
     /*background-color: #525252;*/
 }
 
-.header .logo{
+.logo{
     float: left;
     margin-top: 20px;
     margin-left: 20px;
     opacity: .3;
+}
+
+.logo:hover{
+    opacity: 1;
 }
 
 .header .player_login{
@@ -47,7 +52,7 @@ a{
     color: #fff;
 }
 
-.player_login .player_login_guide_btn{
+.player_login_guide_btn{
     display: inline-block;
     font-size: 15px;
     margin-right: 26px;
@@ -56,6 +61,10 @@ a{
     border-radius: 28px;
     background-color: #31c27c;
     color: #fff;
+}
+
+.player_login_guide_btn:hover{
+    background-color: #2caf6f;
 }
 
 .player_login_guide_icon{
@@ -76,6 +85,10 @@ a{
     opacity: .3;
 }
 
+.register a:hover{
+    opacity: 1;
+}
+
 .player_main{
     position: relative;
     z-index: 3;
@@ -87,34 +100,37 @@ a{
     display: flex;
 }
 
-.song_list_toolbar > a{
-    opacity: .8;
-}
-
-.song_list_toolbar i{
-    opacity: .6;
-}
-
 .mod_btn{
     border: 1px solid rgba(201, 201, 201, 0.2);
+    opacity: .8;
     border-radius: 2px;
     font-size: 14px;
+    width: 122px;
     height: 38px;
     line-height: 38px;
-    width: 122px;
     text-align: center;
     color: #fff;
+}
+
+.mod_btn:hover{
+    border-color: rgba(255, 255, 255, 1);
+    opacity: 1;
 }
 
 .mod_btn + .mod_btn{
     margin-left: 6px;
 }
 
-.mod_btn i{
+.mod_btn > i{
     display: inline-block;
     width: 16px;
     height: 16px;
     vertical-align: middle;
+    opacity: .6;
+}
+
+.mod_btn:hover > i{
+    opacity: 1;
 }
 
 .mod_btn_icon_like{
@@ -142,35 +158,42 @@ a{
     height: 361px;
     color: rgba(255, 255, 255, .8);
     /*background-color: dodgerblue;*/
-    margin-top: 38px;
+    font-size: 14px;
+    margin-top: 16px;
     overflow: auto;
 }
 
-.song_list_header, .song_list_item{
+.song_list_item{
     height: 50px;
     line-height: 50px;
-}
-
-.song_list a{
-    color: rgba(255, 255, 255, .8);
-}
-
-.song_list_checkbox, .song_list_item_checkbox{
-    margin: 0;
-}
-
-.song_list_header, .song_list_item{
     display: flex;
+    align-items: center;
+}
+
+.border_t_b{
+    border-top: 1px solid rgba(255,255,255,.02);
+    border-bottom: 1px solid rgba(255,255,255,.02);
+}
+
+.song_list_check{
+    width: 14px;
+    height: 14px;
+    border: 1px solid rgba(225,225,225,.2);
+    background-position: -1000px;
+}
+
+.song_list_checked{
+    background-position: -60px -80px;
 }
 
 .song_list_number{
     display: inline-block;
-    width: 36px;
+    width: 32px;
     text-align: right;
 }
 
 .song_list_header_name{
-    margin-left: 47px;
+    margin-left: 43px;
     width: 450px;
 }
 
@@ -199,33 +222,76 @@ a{
     background-position: -80px -160px;
 }
 
+.song:hover .song_list_item_delete{
+    display: inline-block;
+}
+
+.song:hover .song_list_item_time{
+    display: none;
+}
+
+.song_list_item_delete:hover{
+    background-position: -120px -160px;
+}
+
 .list_menu_item_play{
     background-position: -80px 0;
+}
+
+.song:hover .list_menu_item_play{
+    display: inline-block;
+}
+
+.list_menu_item_play:hover{
+    background-position: -120px 0;
 }
 
 .list_menu_item_add{
     background-position: -80px -80px;
 }
 
+.song:hover .list_menu_item_add{
+    display: inline-block;
+}
+
+.list_menu_item_add:hover{
+    background-position: -120px -80px;
+}
+
 .list_menu_item_down{
     background-position: -80px -120px;
+}
+
+.song:hover .list_menu_item_down{
+    display: inline-block;
+}
+
+.list_menu_item_down:hover{
+    background-position: -120px -120px;
 }
 
 .list_menu_item_share{
     background-position: -80px -40px;
 }
 
+.song:hover .list_menu_item_share{
+    display: inline-block;
+}
+
+.list_menu_item_share:hover{
+    background-position: -120px -40px;
+}
+
 .song_list_header_author, .song_list_item_author{
     width: 200px;
 }
 
-.border_t_b{
-    border-top: 1px solid rgba(255, 255, 255, .02);
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
+.song_list_item_author > a:hover{
+    color: rgba(255, 255, 255, 1);
 }
 
 .song_list_content > li{
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    border-bottom: 1px solid rgba(255,255,255,.02);
 }
 
 .song_info{
