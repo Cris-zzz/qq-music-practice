@@ -206,7 +206,7 @@ a{
     width: 200px;
 }
 
-.list_menu_item_play, .list_menu_item_add, .list_menu_item_down, .list_menu_item_share{
+.list_menu_item_play, .list_menu_item_pause, .list_menu_item_add, .list_menu_item_down, .list_menu_item_share{
     display: none;
     width: 36px;
     height: 36px;
@@ -238,12 +238,20 @@ a{
     background-position: -80px 0;
 }
 
-.song:hover .list_menu_item_play{
+.song:hover .list_menu_item_play, .song:hover .list_menu_item_pause{
     display: inline-block;
 }
 
 .list_menu_item_play:hover{
     background-position: -120px 0;
+}
+
+.list_menu_item_pause{
+    background-position: -80px -200px;
+}
+
+.list_menu_item_pause:hover{
+    background-position: -120px -200px;
 }
 
 .list_menu_item_add{
@@ -365,6 +373,14 @@ a{
     /*background-color: #1495ff;*/
 }
 
+.footer_left_control > a{
+    opacity: .8;
+}
+
+.footer_left_control > a:hover{
+    opacity: 1;
+}
+
 .btn_prev{
     display: inline-block;
     width: 19px;
@@ -379,6 +395,10 @@ a{
     height: 29px;
     margin-left: 46px;
     background-position: 0 0;
+}
+
+.btn_play_pause{
+    background-position: -30px 0;
 }
 
 .btn_next{
@@ -407,6 +427,10 @@ a{
 
 .footer_middle_info > a{
     color: rgba(255, 255, 255, .8);
+}
+
+.footer_middle_info > a:hover{
+    color: rgba(255, 255, 255, 1);
 }
 
 .footer_middle_time{
