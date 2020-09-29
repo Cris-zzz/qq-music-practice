@@ -105,21 +105,24 @@ $(
         //底部控制按钮事件
         $(".btn_play").click(function () {
             let musicIndex = player.musicIndex;
-            let $currentPlayBtn = $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child");
 
-            player.playMusic($(".song_list_content > li").get(musicIndex).music);
-            if(player.audio.paused){
-                $(this).removeClass("btn_play_pause");
-                $currentPlayBtn.removeClass("list_menu_item_pause").addClass("list_menu_item_play");
+            if(musicIndex === -1){
+                musicIndex = 0;
             }
-            else{
-                $(this).addClass("btn_play_pause");
-                $currentPlayBtn.addClass("list_menu_item_pause").removeClass("list_menu_item_play");
-            }
+            $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
+                .trigger("click");
         })
 
         $(".btn_prev").click(function () {
-
+            if(player.musicIndex > 0) {
+                player.musicIndex --;
+                player.playMusic($(".song_list_content > li").get(player.musicIndex).music);
+            }
+            else{
+                // player.musicIndex = $(".song_list_content > li:last-child").get(0).music.index;
+                player.playMusic($(".song_list_content > li:last-child").get(0).music);
+            }
+            initMusicInfo(player.music);
         })
 
 

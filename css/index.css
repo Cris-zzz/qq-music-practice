@@ -160,7 +160,7 @@ a{
     /*background-color: dodgerblue;*/
     font-size: 14px;
     margin-top: 16px;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .song_list_item{
@@ -316,6 +316,10 @@ a{
 
 .song_info a{
     color: rgba(255, 255, 255, .8);
+}
+
+.song_info a:hover{
+    color: rgba(255, 255, 255, 1);
 }
 
 .song_info_cover{
@@ -483,6 +487,14 @@ a{
     /*background-color: #1495ff;*/
 }
 
+.footer_right_control a{
+    opacity: .8;
+}
+
+.footer_right_control a:hover{
+    opacity: 1;
+}
+
 .btn_style{
     display: inline-block;
     width: 26px;
@@ -520,6 +532,10 @@ a{
     background-position: 0 -430px;
 }
 
+.btn_comment:hover{
+    background-position: 0 -490px;
+}
+
 .comment_numbers{
     position: absolute;
     top: -3px;
@@ -534,11 +550,19 @@ a{
     background-position: -40px -210px;
 }
 
+.btn_comment:hover .comment_num_9{
+    background-position: -40px -230px;
+}
+
 .comment_num_add{
     display: inline-block;
     width: 6px;
     height: 8px;
     background-position: -25px -125px;
+}
+
+.btn_comment:hover .comment_num_add{
+    background-position: -25px -175px;
 }
 
 .btn_mode{

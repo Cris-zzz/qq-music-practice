@@ -1,7 +1,7 @@
 function Player($audio) {
     this.$audio = $audio;
     this.audio = $audio.get(0);
-    this.musicIndex = 0;
+    this.musicIndex = -1;
     this.music = null;
 
 }
