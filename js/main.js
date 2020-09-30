@@ -16,6 +16,7 @@ $(
                         let $item = creatMusicItem(index, ele);
                         $song_list_content.append($item);
 
+                        //默认歌曲
                         player.music = $(".song_list_content > li:first-child").get(0).music;
                         initMusicInfo(player.music);
                     })
@@ -88,8 +89,9 @@ $(
         })
 
         //单列歌曲控制按钮事件
-        $song_list.delegate("a:first-child", "click", function () {
-            player.playMusic($(this).parents("li").get(0).music);
+        $song_list.delegate(".song_list_item_menu > a:first-child", "click", function () {
+            const $currentPlaySong = $(this).parents(".song");
+            player.playMusic($currentPlaySong.get(0).music);
             if(player.audio.paused){
                 $(this).removeClass("list_menu_item_pause").addClass("list_menu_item_play");
                 $(".btn_play").removeClass("btn_play_pause");
@@ -99,6 +101,7 @@ $(
                 $(".song_list_item_menu > a").not(this).removeClass("list_menu_item_pause").addClass("list_menu_item_play");
                 $(".btn_play").addClass("btn_play_pause");
             }
+            $currentPlaySong.addClass("hover").siblings().removeClass("hover");
             initMusicInfo(player.music);
         })
 
@@ -114,28 +117,88 @@ $(
         })
 
         $(".btn_prev").click(function () {
-            if(player.musicIndex > 0) {
-                player.musicIndex --;
-                player.playMusic($(".song_list_content > li").get(player.musicIndex).music);
+            let musicIndex = player.musicIndex;
+
+            if(musicIndex > 0){
+                musicIndex --;
             }
             else{
-                // player.musicIndex = $(".song_list_content > li:last-child").get(0).music.index;
-                player.playMusic($(".song_list_content > li:last-child").get(0).music);
+                musicIndex = $(".song_list_content > li:last-child").get(0).music.index;
             }
+            $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
+                .trigger("click");
             initMusicInfo(player.music);
         })
 
+        $(".btn_next").click(function () {
+            let musicIndex = player.musicIndex;
 
+            if(musicIndex === -1){
+                musicIndex = 1;
+            }
+            else if(musicIndex < $(".song_list_content > li:last-child").get(0).music.index){
+                musicIndex ++;
+            }
+            else{
+                musicIndex = 0;
+            }
+            $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
+                .trigger("click");
+            initMusicInfo(player.music);
+        })
+
+        //切换歌曲时更新歌曲信息
         function initMusicInfo(music) {
             $(".footer_music_name").text(music.name);
             $(".footer_singer_name").text(music.singer);
-            $(".footer_middle_time").text("00:01" + "/" + music.time);
+            $(".footer_middle_time").text("00:00" + " / " + music.time);
             $(".song_info_name > a").text(music.name);
             $(".song_info_singer > a").text(music.singer);
             $(".song_info_album > a").text(music.album);
             $(".song_info_pic").attr("src", music.cover);
             $(".player_bg").css("background-image", "url(" + music.cover + ")");
         }
+
+        //歌曲播放时更新进度条和歌词
+        player.musicTimeUpdate(function (currentTime, duration, timeStr) {
+            $(".footer_middle_time").text(timeStr);
+            $(".footer_progress_play").css("width", currentTime/duration*100 + "%");
+        })
+
+        //默认音量为20%
+        setVolume(0.2);
+
+        //调节音量
+        $(".player_voice").click(function (event) {
+            const voiceStart = $(".voice_progress").offset().left;
+            const voiceClick = event.pageX;
+            const offset = voiceClick - voiceStart;
+            if(offset < 0) return;
+            setVolume(offset/$(".voice_progress").width());
+        })
+
+        //静音
+        $(".btn_voice").click(function () {
+            $(this).toggleClass("btn_voice_mute");
+            if($(this).hasClass("btn_voice_mute")) {
+                player.muted(true);
+            }
+            else{
+                player.muted(false);
+            }
+        })
+
+        //设置音量，同时更新音量进度条，newVolume: 0 ~ 1
+        function setVolume(newVolume) {
+            player.volume = newVolume;
+            $(".voice_progress_play").css("width", 100*player.volume + "%");
+        }
+
+        //mScrollbar
+        $(".song_list").mCustomScrollbar({ scrollInertia: 500 ,
+                                           mouseWheel:{ scrollAmount: 100 },
+                                           autoHideScrollbar: false
+                                         });
 
         //歌曲列表顶部工具栏的鼠标移入移出处理(用css代替)
         // $(".mod_btn").hover(function () {

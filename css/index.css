@@ -222,11 +222,8 @@ a{
     background-position: -80px -160px;
 }
 
-.song:hover .song_list_item_delete{
-    display: inline-block;
-}
-
-.song:hover .song_list_item_time{
+.song:hover .song_list_item_time,
+.song.hover .song_list_item_time{
     display: none;
 }
 
@@ -238,7 +235,18 @@ a{
     background-position: -80px 0;
 }
 
-.song:hover .list_menu_item_play, .song:hover .list_menu_item_pause{
+.song:hover .list_menu_item_play,
+.song:hover .list_menu_item_pause,
+.song:hover .list_menu_item_add,
+.song:hover .list_menu_item_down,
+.song:hover .list_menu_item_share,
+.song:hover .song_list_item_delete,
+.song.hover .list_menu_item_play,
+.song.hover .list_menu_item_pause,
+.song.hover .list_menu_item_add,
+.song.hover .list_menu_item_down,
+.song.hover .list_menu_item_share,
+.song.hover .song_list_item_delete{
     display: inline-block;
 }
 
@@ -258,10 +266,6 @@ a{
     background-position: -80px -80px;
 }
 
-.song:hover .list_menu_item_add{
-    display: inline-block;
-}
-
 .list_menu_item_add:hover{
     background-position: -120px -80px;
 }
@@ -270,20 +274,12 @@ a{
     background-position: -80px -120px;
 }
 
-.song:hover .list_menu_item_down{
-    display: inline-block;
-}
-
 .list_menu_item_down:hover{
     background-position: -120px -120px;
 }
 
 .list_menu_item_share{
     background-position: -80px -40px;
-}
-
-.song:hover .list_menu_item_share{
-    display: inline-block;
 }
 
 .list_menu_item_share:hover{
@@ -465,7 +461,7 @@ a{
 .footer_progress_play{
     position: relative;
     top: -2px;
-    width: 7%;
+    width: 0;
     height: 2px;
     background-color: rgba(255, 255, 255, .7);
 }
@@ -580,7 +576,8 @@ a{
     justify-content: space-between;
     align-items: center;
     width: 112px;
-    height: 35px;
+    height: 15px;
+    margin-top: 10px;
     margin-right: 79px;
     cursor: pointer;
 }
@@ -592,15 +589,19 @@ a{
     background-position: 0 -144px;
 }
 
+.btn_voice_mute{
+    background-position: 0 -182px;
+}
+
 .voice_progress{
     width: 80px;
     height: 2px;
-    background-color: rgba(255,255,255,.1)
+    background-color: rgba(255,255,255,.1);
 }
 
 .voice_progress_play{
     position: relative;
-    width: 40%;
+    width: 20%;
     height: 2px;
     background-color: rgba(255,255,255,.7)
 }
@@ -619,4 +620,8 @@ a{
 
 .sprite_comment{
     background-image: url("../img/comment.png");
+}
+
+._mCS_1 .mCSB_dragger .mCSB_dragger_bar{
+    width: 8px;
 }
