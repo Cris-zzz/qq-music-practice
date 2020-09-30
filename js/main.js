@@ -142,11 +142,15 @@ $(
             else{
                 musicIndex = 0;
             }
-            // $(".footer_progress_play").css("width", 0 + "%");
             $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
                 .trigger("click");
             initMusicInfo(player.music);
         })
+
+        //加载歌词
+        function initLyric(music) {
+
+        }
 
         //切换歌曲时更新歌曲信息
         function initMusicInfo(music) {
