@@ -26,7 +26,7 @@ class Lyric {
             dataType: "text",
             success: function (data) {
                 console.log(data);
-                const array = data.split("\r\n");
+                const array = data.split("\n");
                 console.log(array);
                 $.each(array, function (index, item) {
                     const lrc = item.split("]")[1];
