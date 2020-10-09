@@ -353,7 +353,17 @@ a{
 }
 
 .song_info_lyric_inner{
-    line-height: 34px;
+    line-height: 30px;
+}
+
+.song_info_lyric_inner > p{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.song_info_lyric_inner > p.on{
+    color: #31c27c;
 }
 
 .footer{

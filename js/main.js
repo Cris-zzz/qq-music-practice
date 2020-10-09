@@ -1,4 +1,5 @@
 import Player from "./playerControl.js";
+import Lyric from "./lyric.js";
 
 $(
     function () {
@@ -48,6 +49,9 @@ $(
             return $item;
         }
 
+        //创建歌词
+        const lyric = new Lyric(".song_info_lyric_inner");
+
         //单列歌曲
         const $song_list = $(".song_list");
 
@@ -90,6 +94,9 @@ $(
         //单列歌曲控制按钮事件
         $song_list.delegate(".song_list_item_menu > a:first-child", "click", function () {
             const $currentPlaySong = $(this).parents(".song");
+            if(player.musicIndex !== $currentPlaySong.get(0).music.index) {
+                initMusicInfo(player.music);
+            }
             player.playMusic($currentPlaySong.get(0).music);
             if(player.audio.paused){
                 $(this).removeClass("list_menu_item_pause").addClass("list_menu_item_play");
@@ -101,7 +108,6 @@ $(
                 $(".btn_play").addClass("btn_play_pause");
             }
             $currentPlaySong.addClass("hover").siblings().removeClass("hover");
-            initMusicInfo(player.music);
         })
 
         //底部控制按钮事件
@@ -126,7 +132,6 @@ $(
             }
             $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
                 .trigger("click");
-            initMusicInfo(player.music);
         })
 
         $(".btn_next").click(function () {
@@ -143,36 +148,7 @@ $(
             }
             $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
                 .trigger("click");
-            initMusicInfo(player.music);
         })
-
-        //加载歌词
-        function initLyric(music) {
-            const $lyric = $(".song_info_lyric_inner");
-            const lyric = [];
-
-            $lyric.html("");
-            $.ajax({
-                url: music.link_lrc,
-                dataType: "text",
-                success: function (data) {
-                    const array = data.split("\r\n");
-                    const timeReg = /\[(\d*:\d*\.\d*)\]/;
-                    $.each(array, function (index, ele) {
-                        const lrc = ele.split("]")[1];
-                        if(!lrc.length) return;
-                        lyric.push(lrc);
-                    })
-                    $.each(lyric, function (index, item) {
-                        const $lrcItem = $(`<p>${item}</p>`);
-                        $lyric.append($lrcItem);
-                    });
-                },
-                error: function (e) {
-                    console.log(e);
-                }
-            });
-        }
 
         //切换歌曲时更新歌曲信息
         function initMusicInfo(music) {
@@ -185,13 +161,14 @@ $(
             $(".song_info_pic").attr("src", music.cover);
             $(".player_bg").css("background-image", "url(" + music.cover + ")");
             $(".footer_progress_play").css("width", 0 + "%");
-            initLyric(music);
+            lyric.loadLyric(music);
         }
 
         //歌曲播放时更新进度条和歌词
         player.musicTimeUpdate(function (currentTime, duration, timeStr) {
             $(".footer_middle_time").text(timeStr);
             $(".footer_progress_play").css("width", currentTime/duration*100 + "%");
+            lyric.changeLyric(currentTime);
         })
 
         //调节播放进度条
