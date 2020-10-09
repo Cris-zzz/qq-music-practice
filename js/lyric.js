@@ -25,7 +25,7 @@ class Lyric {
             url: music.link_lrc,
             dataType: "text",
             success: function (data) {
-                console.log(data);
+
                 const array = data.split("\r\n");
                 $.each(array, function (index, item) {
                     const lrc = item.split("]")[1];
@@ -41,6 +41,7 @@ class Lyric {
                     time = (min + sec).toFixed(2);
                     $this.times.push(time);
                 })
+                console.log($this.lyric);
                 $.each($this.lyric, function (index, item) {
                     const $lrcItem = $(`<p>${item}</p>`);
                     $this.$lyric.append($lrcItem);
