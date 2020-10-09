@@ -25,8 +25,9 @@ class Lyric {
             url: music.link_lrc,
             dataType: "text",
             success: function (data) {
-
+                console.log(data);
                 const array = data.split("\r\n");
+                console.log(array);
                 $.each(array, function (index, item) {
                     const lrc = item.split("]")[1];
                     if(!lrc.length) return;
