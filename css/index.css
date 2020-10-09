@@ -449,9 +449,11 @@ a{
 }
 
 .footer_middle_progress{
+    width: 100%;
     height: 14px;
     padding-top: 6px;
     box-sizing: border-box;
+    cursor: pointer;
     /*background-color: #ffbf00;*/
 }
 

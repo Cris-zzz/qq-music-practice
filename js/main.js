@@ -15,11 +15,10 @@ $(
                     $.each(data, function (index, ele) {
                         let $item = creatMusicItem(index, ele);
                         $song_list_content.append($item);
-
-                        //默认歌曲
-                        player.music = $(".song_list_content > li:first-child").get(0).music;
-                        initMusicInfo(player.music);
                     })
+                    //默认歌曲
+                    player.music = $(".song_list_content > li:first-child").get(0).music;
+                    initMusicInfo(player.music);
                 }
             }
         )
@@ -149,7 +148,30 @@ $(
 
         //加载歌词
         function initLyric(music) {
+            const $lyric = $(".song_info_lyric_inner");
+            const lyric = [];
 
+            $lyric.html("");
+            $.ajax({
+                url: music.link_lrc,
+                dataType: "text",
+                success: function (data) {
+                    const array = data.split("\r\n");
+                    const timeReg = /\[(\d*:\d*\.\d*)\]/;
+                    $.each(array, function (index, ele) {
+                        const lrc = ele.split("]")[1];
+                        if(!lrc.length) return;
+                        lyric.push(lrc);
+                    })
+                    $.each(lyric, function (index, item) {
+                        const $lrcItem = $(`<p>${item}</p>`);
+                        $lyric.append($lrcItem);
+                    });
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
         }
 
         //切换歌曲时更新歌曲信息
@@ -163,12 +185,21 @@ $(
             $(".song_info_pic").attr("src", music.cover);
             $(".player_bg").css("background-image", "url(" + music.cover + ")");
             $(".footer_progress_play").css("width", 0 + "%");
+            initLyric(music);
         }
 
         //歌曲播放时更新进度条和歌词
         player.musicTimeUpdate(function (currentTime, duration, timeStr) {
             $(".footer_middle_time").text(timeStr);
             $(".footer_progress_play").css("width", currentTime/duration*100 + "%");
+        })
+
+        //调节播放进度条
+        $(".footer_middle_progress").click(function (event) {
+            const voiceStart = $(".footer_middle_progress").offset().left;
+            const voiceClick = event.pageX;
+            const offset = voiceClick - voiceStart;
+            player.audio.currentTime = player.audio.duration*offset/$(".footer_middle_progress").width();
         })
 
         //默认音量为20%
