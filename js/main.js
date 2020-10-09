@@ -17,8 +17,9 @@ $(
                         let $item = creatMusicItem(index, ele);
                         $song_list_content.append($item);
                     })
-                    //默认歌曲
-                    player.music = $(".song_list_content > li:first-child").get(0).music;
+
+                    //初始歌曲
+                    player.initMusic($(".song_list_content > li:first-child").get(0).music);
                     initMusicInfo(player.music);
                 }
             }
@@ -94,7 +95,7 @@ $(
         //单列播放
         $song_list.delegate(".song_list_item_menu > a:first-child", "click", function () {
             const $currentPlaySong = $(this).parents(".song");
-            if(player.musicIndex !== $currentPlaySong.get(0).music.index) {
+            if(player.music.name !== $currentPlaySong.get(0).music.name) {
                 initMusicInfo($currentPlaySong.get(0).music);
             }
             player.playMusic($currentPlaySong.get(0).music);
@@ -112,7 +113,28 @@ $(
 
         //单列删除
         $song_list.delegate(".song_list_item_delete", "click", function () {
-            $(this).parents(".song").remove();
+            const $deleteSong = $(this).parents(".song");
+            const $songAfter = $(".song").slice($deleteSong.get(0).music.index + 1);
+            $songAfter.each(function () {
+                let $item = $(this).find(".song_list_number");
+                $item.text(parseInt($item.text()) - 1);
+                this.music.index -= 1;
+            })
+            if($deleteSong.get(0).music.name === player.music.name) {
+                $($songAfter.eq(0).find(".song_list_item_menu > a:first-child")
+                    .trigger("click"));
+            }
+            else {
+                $(".song").each(function () {
+                    if(this.music.name === player.music.name)
+                    {
+                        player.music = this.music;
+                        player.musicIndex = this.music.index;
+                        return false;
+                    }
+                })
+            }
+            $deleteSong.remove();
         })
 
         //歌曲播放完毕
@@ -126,9 +148,6 @@ $(
         $(".btn_play").click(function () {
             let musicIndex = player.musicIndex;
 
-            if(musicIndex === -1){
-                musicIndex = 0;
-            }
             $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
                 .trigger("click");
         })
@@ -160,6 +179,38 @@ $(
             }
             $(".song_list_content > li").eq(musicIndex).find(".song_list_item_menu > a:first-child")
                 .trigger("click");
+        })
+
+        let style = 0;
+        $(".btn_style").click(function () {
+            if(style < 3) {
+                style ++;
+            }
+            else{
+                style = 0;
+            }
+
+            switch(style) {
+                case 1:
+                    $(this).css({"background-position": "0 -257px",
+                                        "height": "25px",
+                                        "margin-top": "-6px"});
+                    break;
+                case 2:
+                    $(this).css({"background-position": "0 -72px",
+                                         "height": "23px",
+                                         "margin-top": "0px"});
+                    break;
+                case 3:
+                    $(this).css({"background-position": "0 -232px",
+                                        "height": "25px",
+                                        "margin-top": "0px"});
+                    break;
+                default:
+                    $(this).css({"background-position": "0 -205px",
+                                        "height": "25px",
+                                        "margin-top": "0px"});
+            }
         })
 
         //切换歌曲时更新歌曲信息

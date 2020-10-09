@@ -6,8 +6,14 @@ class Player {
         this.music = null;
     }
 
+    initMusic(music) {
+        this.musicIndex = music.index;
+        this.music = music;
+        this.$audio.attr("src", music.link_url);
+    }
+
     playMusic(music) {
-        if(this.musicIndex === music.index) {
+        if(this.music.name === music.name) {
             if(this.audio.paused){
                 this.audio.play();
             }

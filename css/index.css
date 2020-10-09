@@ -515,6 +515,7 @@ a{
     vertical-align: middle;
     margin-left: 43px;
     background-position: 0 -205px;
+    box-sizing: border-box;
 }
 
 .btn_like{
