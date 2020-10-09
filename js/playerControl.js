@@ -1,13 +1,12 @@
-function Player($audio) {
-    this.$audio = $audio;
-    this.audio = $audio.get(0);
-    this.musicIndex = -1;
-    this.music = null;
-}
+class Player {
+    constructor($audio) {
+        this.$audio = $audio;
+        this.audio = $audio.get(0);
+        this.musicIndex = -1;
+        this.music = null;
+    }
 
-Player.prototype = {
-    constructor: Player,
-    playMusic: function (music) {
+    playMusic(music) {
         if(this.musicIndex === music.index) {
             if(this.audio.paused){
                 this.audio.play();
@@ -22,8 +21,9 @@ Player.prototype = {
             this.musicIndex = music.index;
             this.music = music;
         }
-    },
-    musicTimeUpdate: function (callback) {
+    }
+
+    musicTimeUpdate(callback) {
         const $this = this;
         this.$audio.on("timeupdate", function () {
             const currentTime = $this.audio.currentTime;
@@ -32,8 +32,9 @@ Player.prototype = {
             if(duration !== duration) return; //第一次获取到的duration为NaN
             callback(currentTime, duration, timeStr);
         })
-    },
-    formatTime: function (currentTime, duration) {
+    }
+
+    formatTime(currentTime, duration) {
         let endMin = parseInt(duration / 60);
         let endSec = parseInt(duration % 60);
         if(endMin < 10){
@@ -52,14 +53,21 @@ Player.prototype = {
             currentSec = "0" + currentSec;
         }
         return currentMin + ":" + currentSec + " / " + endMin + ":" + endSec;
-    },
+    }
+
+    musicEnd(callback) {
+        this.$audio.on("ended", () => {callback();})
+    }
+
     set volume(newVolume) {
         this.audio.volume = newVolume;
-    },
+    }
+
     get volume() {
         return this.audio.volume;
-    },
-    muted: function (state) {
+    }
+
+    muted(state) {
         this.audio.muted = state;
     }
 }

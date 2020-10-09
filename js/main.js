@@ -91,11 +91,11 @@ $(
             }
         })
 
-        //单列歌曲控制按钮事件
+        //单列播放
         $song_list.delegate(".song_list_item_menu > a:first-child", "click", function () {
             const $currentPlaySong = $(this).parents(".song");
             if(player.musicIndex !== $currentPlaySong.get(0).music.index) {
-                initMusicInfo(player.music);
+                initMusicInfo($currentPlaySong.get(0).music);
             }
             player.playMusic($currentPlaySong.get(0).music);
             if(player.audio.paused){
@@ -108,6 +108,18 @@ $(
                 $(".btn_play").addClass("btn_play_pause");
             }
             $currentPlaySong.addClass("hover").siblings().removeClass("hover");
+        })
+
+        //单列删除
+        $song_list.delegate(".song_list_item_delete", "click", function () {
+            $(this).parents(".song").remove();
+        })
+
+        //歌曲播放完毕
+        player.musicEnd(function () {
+            $(".song_list_content > li").eq(player.musicIndex).find(".song_list_item_menu > a:first-child")
+                .removeClass("list_menu_item_pause").addClass("list_menu_item_play");
+            $(".btn_play").removeClass("btn_play_pause");
         })
 
         //底部控制按钮事件
@@ -172,24 +184,37 @@ $(
         })
 
         //调节播放进度条
-        $(".footer_middle_progress").click(function (event) {
-            const voiceStart = $(".footer_middle_progress").offset().left;
-            const voiceClick = event.pageX;
-            const offset = voiceClick - voiceStart;
-            player.audio.currentTime = player.audio.duration*offset/$(".footer_middle_progress").width();
+        $(".footer_middle_progress").mousedown(function (event) {
+            changeProgress(".footer_middle_progress", event, percent => {
+                player.audio.currentTime = player.audio.duration * percent;
+            });
         })
 
         //默认音量为20%
         setVolume(0.2);
 
         //调节音量
-        $(".player_voice").click(function (event) {
-            const voiceStart = $(".voice_progress").offset().left;
-            const voiceClick = event.pageX;
-            const offset = voiceClick - voiceStart;
-            if(offset < 0) return;
-            setVolume(offset/$(".voice_progress").width());
+        $(".player_voice").mousedown(function (event) {
+            changeProgress(".voice_progress", event, setVolume);
         })
+
+        //进度条点击与拖动
+        function changeProgress(progress, event, callback) {
+            const $Progress = $(progress);
+            let positionStart = $Progress.offset().left;
+            let positionClick = event.pageX;
+            let positionOffset = positionClick - positionStart;
+            callback(positionOffset / $Progress.width());
+            $(document).mousemove(function (event) {
+                positionClick = event.pageX;
+                positionOffset = positionClick - positionStart;
+                if(positionOffset >= 0 && positionOffset < $Progress.width())
+                    callback(positionOffset / $Progress.width());
+            });
+            $(document).mouseup(function () {
+                $(document).off("mousemove");
+            });
+        }
 
         //静音
         $(".btn_voice").click(function () {

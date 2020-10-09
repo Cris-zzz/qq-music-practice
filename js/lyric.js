@@ -20,7 +20,7 @@ class Lyric {
         this.lyric = [];
         this.times = [];
         this.timeIndex = 0;
-        this.$lyric.animate({"margin-top": 0}, 150);
+        this.$lyric.animate({"margin-top": 20 + "px"}, 150);
         $.ajax({
             url: music.link_lrc,
             dataType: "text",
@@ -66,7 +66,7 @@ class Lyric {
 
         function doChange(index) {
             $this.timeIndex = index;
-            $this.$lyric.animate({"margin-top": -30 * $this.timeIndex}, 150);
+            $this.$lyric.stop().animate({"margin-top": 20 + -30 * $this.timeIndex + "px"}, 150);
             $this.$lyric.find("p").removeClass("on").eq($this.timeIndex).addClass("on");
         }
         // if(currentTime >= this.times[this.timeIndex]){
