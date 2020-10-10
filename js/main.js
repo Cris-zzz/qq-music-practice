@@ -256,12 +256,15 @@ $(
             let positionStart = $Progress.offset().left;
             let positionClick = event.pageX;
             let positionOffset = positionClick - positionStart;
-            callback(positionOffset / $Progress.width());
+            if(positionOffset >= 0 && positionOffset < $Progress.width()) {
+                callback(positionOffset / $Progress.width());
+            }
             $(document).mousemove(function (event) {
                 positionClick = event.pageX;
                 positionOffset = positionClick - positionStart;
-                if(positionOffset >= 0 && positionOffset < $Progress.width())
+                if(positionOffset >= 0 && positionOffset < $Progress.width()) {
                     callback(positionOffset / $Progress.width());
+                }
             });
             $(document).mouseup(function () {
                 $(document).off("mousemove");

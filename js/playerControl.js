@@ -26,6 +26,14 @@ class Player {
             this.audio.play();
             this.musicIndex = music.index;
             this.music = music;
+            const $this = this;
+            let timer = setInterval(function () {
+                console.log($this.audio.buffered);
+            },300);
+            this.$audio.on("canplaythrough", function () {
+                console.log("music load complete");
+                clearInterval(timer);
+            })
         }
     }
 
