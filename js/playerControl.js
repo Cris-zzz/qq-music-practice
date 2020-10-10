@@ -10,6 +10,18 @@ class Player {
         this.musicIndex = music.index;
         this.music = music;
         this.$audio.attr("src", music.link_url);
+        $(".footer_progress_load").css("width", "0");
+        const $this = this;
+        let Proportion = 0;
+        let timer = setInterval(function () {
+            Proportion = $this.audio.buffered.end(0) / $this.audio.duration * 100;
+            if(Proportion >= 100) {
+                console.log("music load complete");
+                clearInterval(timer);
+            }
+            console.log(Proportion + "%");
+            $(".footer_progress_load").stop().animate({"width": Proportion + "%"}, 150)
+        },300);
     }
 
     playMusic(music) {
@@ -22,18 +34,9 @@ class Player {
             }
         }
         else {
-            this.$audio.attr("src", music.link_url);
+            this.initMusic(music);
+
             this.audio.play();
-            this.musicIndex = music.index;
-            this.music = music;
-            const $this = this;
-            let timer = setInterval(function () {
-                console.log($this.audio.buffered);
-            },300);
-            this.$audio.on("canplaythrough", function () {
-                console.log("music load complete");
-                clearInterval(timer);
-            })
         }
     }
 
