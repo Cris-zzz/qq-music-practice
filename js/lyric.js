@@ -25,15 +25,12 @@ class Lyric {
             url: music.link_lrc,
             dataType: "text",
             success: function (data) {
-                console.log(data);
                 // const array = data.split("\r\n");//本地服务器
                 const array = data.split("\n");//github
-                console.log(array);
                 $.each(array, function (index, item) {
                     const lrc = item.split("]")[1];
                     if(!lrc.length) return;
                     $this.lyric.push(lrc);
-
                     res = timeReg.exec(item);
                     if(res == null) return;
                     timeStr = res[1];
@@ -43,7 +40,6 @@ class Lyric {
                     time = (min + sec).toFixed(2);
                     $this.times.push(time);
                 })
-                console.log($this.lyric);
                 $.each($this.lyric, function (index, item) {
                     const $lrcItem = $(`<p>${item}</p>`);
                     $this.$lyric.append($lrcItem);

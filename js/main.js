@@ -222,6 +222,7 @@ $(
             $(".song_info_singer > a").text(music.singer);
             $(".song_info_album > a").text(music.album);
             $(".song_info_pic").attr("src", music.cover);
+            console.log("cover picture change");
             $(".player_bg").css("background-image", "url(" + music.cover + ")");
             $(".footer_progress_play").css("width", 0 + "%");
             lyric.loadLyric(music);
